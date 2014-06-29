@@ -1,0 +1,210 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Image Quest</title>
+<!-- for pc / smartphone  -->
+<link rel="stylesheet" media="all" type="text/css" href="./css/common.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="./js/common.js" async defer></script>
+<script src="../js/ga.js" async defer></script>
+<!--[if lt IE 9]> 
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+</head>
+<body>
+<div id="wrapper">
+    <header id="header" role="banner">
+        <div id="header_body">
+            <h1 id="sitetitle">Image Quest</h1>
+        </div>
+    </header>
+    <section class="container-wrapper">
+        <main id="container" role="main">
+            <div class="iqArea">
+                <div class="status">
+                    <ul class="statusTitle">
+                        <li class="name">NAME</li>
+                        <li class="hp num">HP</li>
+                        <li class="atk num">ATK</li>
+                        <li class="def num">DEF</li>
+                    </ul>
+                    <ul class="player01">
+                        <li class="name">Player01</li>
+                        <li class="hp num">999</li>
+                        <li class="atk num">999</li>
+                        <li class="def num">999</li>
+                    </ul>
+                    <ul class="player02">
+                        <li class="name">Player02</li>
+                        <li class="hp num">999</li>
+                        <li class="atk num">999</li>
+                        <li class="def num">999</li>
+                    </ul>
+                    <ul class="player03">
+                        <li class="name">Player03</li>
+                        <li class="hp num">999</li>
+                        <li class="atk num">999</li>
+                        <li class="def num">999</li>
+                    </ul>
+                </div>
+                <div class="monster">
+                    <ul class="monsterLi">
+                        <li class=""><img id="monsimg" src="./images/fc31_king.png" height="200" alt=""></li>
+                    </ul>
+                </div>
+                <div class="commend">
+                    <p class="commendTitle">Player01</p>
+                    <ul class="player01">
+                    <li class="battle cur"><a href="">Battle</a></li>
+                    <li class="guard"><a href="">Guard</a></li>
+                    <li class="item"><a href="">Tools</a></li>
+                    </ul>
+                </div>
+                <div class="message">
+                    <p>Welcome to Image Quest!</p>
+                </div>
+            </div>
+            <div id="columns">
+                <div id="p1" class="column" ondrop="drop(event)" ondragover="allowDrop(event)">P1:Drag image here</div>
+                <div id="p2" class="column" ondrop="drop(event)" ondragover="allowDrop(event)">P2:Drag image here</div>
+                <div id="p3" class="column" ondrop="drop(event)" ondragover="allowDrop(event)">P3:Drop image here</div>
+            </div>
+            <div id="drop">
+                <div id="drop_zone" class="column">Drop files here</div>
+                <output id="list"></output>
+                <div id="startBtn"></div>
+            </div>
+        </main>
+    </section>
+    <footer role="contentinfo" id="footer">
+        <small>Copyright 2014, Image Quest. All rights reserved.</small>
+        <address>contact:xxxxx@gmail.com </address>
+    </footer>
+<script>
+  function handleFileSelect(evt) {
+    evt.stopPropagation();
+    evt.preventDefault();
+
+    var files = evt.dataTransfer.files; // FileList object.
+    // files is a FileList of File objects. List some properties.
+    var output = [];
+    for (var i = 0, f; f = files[i]; i++) {
+      output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+                  f.size, ' bytes, last modified: ',
+                  f.lastModifiedDate.toLocaleDateString(), '</li>');
+
+      // Only process image files.
+      if (!f.type.match('image.*')) {
+        continue;
+      }
+      var reader = new FileReader();
+
+      // closure to capture the file information
+      reader.onload = (function(theFile) {
+        return function(e) {
+          // Render thumbnail.
+          console.log(e.target.result);
+          var timestamp = new Date().getUTCMilliseconds();
+          var span = document.createElement('span');
+          span.innerHTML = ['<div id="'+timestamp+'" ondrop="drop(event)" ondragover="allowDrop(event)"><img id="img'+timestamp+'" class="thumb" src="',e.target.result,'" width="80" title="', escape(theFile.name),'" draggable="true" ondragstart="drag(event)" /></div>'].join('');
+          document.getElementById('list').insertBefore(span,null);
+          
+        };
+      })(f);
+      // read in the image file as a data URL.
+      console.log(reader.readAsDataURL(f));
+
+    }
+  }
+
+  function handleDragOver(evt) {
+    evt.stopPropagation();
+    evt.preventDefault();
+    evt.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
+  }
+  // Setup the dnd listeners.
+  var dropZone = document.getElementById('drop_zone');
+  dropZone.addEventListener('dragover', handleDragOver, false);
+  dropZone.addEventListener('drop', handleFileSelect, false);
+
+
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("Text", ev.target.id);
+}
+
+function drop(ev) {
+  console.log(ev.target.id);
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("Text");
+  var imgdiv = document.getElementById(data);
+  ev.target.innerHTML = "";
+  ev.target.appendChild(imgdiv);
+  var playerID = ev.target.id.split("p");
+  displayPlayerStatus(playerID[1],imgdiv);
+}
+function displayPlayerStatus(pId,imgdiv){
+  var res = imgdiv.src.split(",");
+  var offset = 100;
+  var hp = calStatus(res[1].substring(offset+0,offset+8).toLowerCase());
+  var atk = calStatus(res[1].substring(offset+8,offset+16).toLowerCase());
+  var def = calStatus(res[1].substring(offset+16,offset+24).toLowerCase());
+  setPlayerData(pId,'player0'+pId,hp,atk,def);
+}
+function calStatus(s){
+  var convertTable = {
+   "+": "20",
+   "/": "25",
+   "=": "24",
+   "0": "10",
+   "1": "1",
+   "2": "2",
+   "3": "3",
+   "4": "4",
+   "5": "5",
+   "6": "6",
+   "7": "7",
+   "8": "8",
+   "9": "9",
+   "a": "3",
+   "b": "1",
+   "c": "2",
+   "d": "3",
+   "e": "4",
+   "f": "5",
+   "g": "6",
+   "h": "7",
+   "i": "8",
+   "j": "9",
+   "k": "10",
+   "l": "11",
+   "m": "12",
+   "n": "13",
+   "o": "14",
+   "p": "15",
+   "q": "16",
+   "r": "17",
+   "s": "18",
+   "t": "19",
+   "u": "20",
+   "v": "1",
+   "w": "2",
+   "x": "3",
+   "y": "4",
+   "z": "5",
+  }
+  var strs = s.split('');
+  var total = 0;
+  for(var i=0; i<strs.length; i++){
+    total += Number(convertTable[strs[i]]);
+  }
+  return total;
+}
+</script>
+</div>
+</body>
+</html>

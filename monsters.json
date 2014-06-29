@@ -1,0 +1,223 @@
+{
+   "@columns": "5",
+   "@rows": "41",
+   "row": [
+      { 
+         "name" : "Slyme",
+         "image_url" : "fc01_suraimu.png",
+         "hp" : "3",
+         "atk" : "5",
+         "def" : "3"
+      },
+      {
+         "name" : "SlymeBesu",
+         "image_url" : "fc02_suraimubesu.png",
+         "hp" : "4",
+         "atk" : "7",
+         "def" : "3"
+      },
+      {
+        "name"  : "Doraki",
+         "image_url" : "fc03_doraki-.png",
+         "hp" : "6",
+         "atk": "9",
+         "def": "6"
+      },
+      {
+        "name" : "Ghost",
+         "image_url":"fc04_go-suto.png",
+         "hp": "7",
+         "atk": "11",
+         "def": "8"
+      },
+      {
+        "name" : "Magician",
+         "image_url":"fc05_mahoutukai.png",
+         "hp": "13",
+         "atk": "11",
+         "def": "12"
+      },
+      {
+        "name" : "MageDoraki",
+         "image_url":"fc06_meizidoraki-.png",
+         "hp": "15",
+         "atk": "14",
+         "def": "14"
+      },
+      {
+        "name" : "GiantScopion",
+         "image_url":"fc07_oosasori.png",
+         "hp": "20",
+         "atk": "18",
+         "def": "16"
+      },
+      {
+        "name" : "Meda",
+         "image_url":"fc09_me-da.png",
+         "hp": "22",
+         "atk": "20",
+         "def": "18"
+      },
+      {
+        "name" : "MetoroGhost",
+         "image_url":"fc10_metorogo-suto.png",
+         "hp": "23",
+         "atk": "18",
+         "def": "20"
+      },
+      {
+         "name" : "Dororu",
+         "image_url":"fc11_dororu.png",
+         "hp": "25",
+         "atk": "24",
+         "def": "24"
+      },
+      {
+         "name" : "Doraki-ma",
+         "image_url":"fc12_doraki-ma.png",
+         "hp": "20",
+         "atk": "22",
+         "def": "26"
+      },
+      {
+         "name" : "Gaikotu",
+         "image_url":"fc08_gaikotu.png",
+         "hp": "30",
+         "atk": "28",
+         "def": "22"
+      },
+      {
+         "name" : "Sorcerer",
+         "image_url":"fc13_madousi.png",
+         "hp": "30",
+         "atk": "28",
+         "def": "22"
+      },
+      {
+         "name" : "Iron scopion",
+         "image_url":"fc14_tetunosasori.png",
+         "hp": "22",
+         "atk": "36",
+         "def": "42"
+      },
+      {
+         "name" : "Rikanto",
+         "image_url":"fc15_rikanto.png",
+         "hp": "34",
+         "atk": "40",
+         "def": "30"
+      },
+      {
+         "name" : "Siryou",
+         "image_url":"fc16_siryou.png",
+         "hp": "36",
+         "atk": "44",
+         "def": "34"
+      },
+      {
+         "name" : "MetalSlyme",
+         "image_url":"fc27_metarusuraimu.png",
+         "hp": "4",
+         "atk": "10",
+         "def": "255"
+      },
+      {
+         "name" : "Hell Ghost",
+         "image_url":"fc20_herugo-suto.png",
+         "hp": "36",
+         "atk": "40",
+         "def": "38"
+      },
+      {
+         "name" : "Rinkantomarumu",
+         "image_url":"fc17_rikantomamuru.png",
+         "hp": "38",
+         "atk": "50",
+         "def": "36"
+      },
+      {
+         "name" : "Medarodo",
+         "image_url":"fc21_me-daro-do.png",
+         "hp": "35",
+         "atk": "47",
+         "def": "40"
+      },
+      {
+         "name" : "DororuMage",
+         "image_url":"fc22_dororumeizi.png",
+         "hp": "38",
+         "atk": "52",
+         "def": "50"
+      },
+      {
+         "name" : "Kimera",
+         "image_url":"fc18_kimera.png",
+         "hp": "42",
+         "atk": "56",
+         "def": "48"
+      },
+      {
+         "name" : "DeathScopion",
+         "image_url":"fc24_sinosasori.png",
+         "hp": "35",
+         "atk": "60",
+         "def": "90"
+      },
+      {
+         "name" : "SirouKnight",
+         "image_url":"fc23_siryounokisi.png",
+         "hp": "46",
+         "atk": "68",
+         "def": "56"
+      },
+      {
+         "name" : "GoldMan",
+         "image_url":"fc19_go-rudoman.png",
+         "hp": "50",
+         "atk": "48",
+         "def": "40"
+      },
+      {
+         "name" : "YoroiKnight",
+         "image_url":"fc25_yoroinokisi.png",
+         "hp": "55",
+         "atk": "76",
+         "def": "78"
+      },
+      {
+         "name" : "MageKimera",
+         "image_url":"fc28_meizikimera.png",
+         "hp": "58",
+         "atk": "78",
+         "def": "68"
+      },
+      {
+         "name" : "ShadowKnight",
+         "image_url":"fc26_kagenokisi.png",
+         "hp": "50",
+         "atk": "79",
+         "def": "64"
+      },
+      {
+         "name" : "KillerRikanto",
+         "image_url":"fc29_kira-rikanto.png",
+         "hp": "60",
+         "atk": "86",
+         "def": "70"
+      },
+      {
+         "name" : "Dragon",
+         "image_url":"fc30_doragon.png",
+         "hp": "65",
+         "atk": "88",
+         "def": "74"
+      },
+      {
+         "name" : "KingSlyme",
+         "image_url":"fc31_king.png",
+         "hp": "130",
+         "atk": "140",
+         "def": "200"
+      }
+   ]
+}
